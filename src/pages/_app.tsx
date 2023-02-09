@@ -11,6 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Exercises for Programmers</title>
+        <meta
+          name="description"
+          content="Solutions to 'Exercises for Programmers' by Brian P. Hogan"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={roboto.className} style={{ marginTop: "1em" }}>
         <Container>
