@@ -4,13 +4,14 @@ At some point, you might have to deal with currency exchange rates, and you’ll
 
 Write a program that converts currency. Specifically, convert euros to U.S. dollars. Prompt for the amount of money in euros you have, and prompt for the current exchange rate of the euro. Print out the new amount in U.S. dollars. The formula for currency conversion is
 
-![Currency Conversion](currency-conversion.png)
+![Currency Conversion](11-currency-conversion.png)
 
 where
-* ```amount to``` is the amount in U.S. dollars.
-* ```amount from``` is the amount in euros.
-* ```rate from``` is the current exchange rate in euros.
-* ```rate to``` is the current exchange rate of the U.S. dollar.
+
+- `amount to` is the amount in U.S. dollars.
+- `amount from` is the amount in euros.
+- `rate from` is the current exchange rate in euros.
+- `rate to` is the current exchange rate of the U.S. dollar.
 
 ### Example Output
 
@@ -21,5 +22,6 @@ What is the exchange rate? 137.51
 ```
 
 ### Constraints
-* Ensure that fractions of a cent are rounded up to the next penny.
-* Use a single output statement.
+
+- Ensure that fractions of a cent are rounded up to the next penny.
+- Use a single output statement.

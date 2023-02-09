@@ -4,7 +4,7 @@ Sorting records is helpful, but sometimes you need to filter down the results to
 
 Given the following data set
 
-![Filtering Records](filtering-records.png)
+![Filtering Records](40-filtering-records.png)
 
 create a program that lets a user locate all records that match the search string by comparing the search string to the first or last name field.
 
@@ -21,4 +21,4 @@ Jake Jacobson       | Programmer        |
 
 ### Constraint
 
-* Implement the data using an array of maps or an associative array.
+- Implement the data using an array of maps or an associative array.

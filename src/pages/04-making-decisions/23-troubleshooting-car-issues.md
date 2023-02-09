@@ -4,7 +4,7 @@ An expert system is a type of artificial intelligence program that uses a knowle
 
 Create a program that walks the user through troubleshooting issues with a car. Use the following decision tree to build the system:
 
-![Troubleshooting Car Issue](troubleshooting-car-issues.png)
+![Troubleshooting Car Issue](23-troubleshooting-car-issues.png)
 
 ### Example Output
 
@@ -17,4 +17,4 @@ Replace cables and try again.
 
 ### Constraint
 
-* Ask only questions that are relevant to the situation and to the previous answers. Don’t ask for all inputs at once.
+- Ask only questions that are relevant to the situation and to the previous answers. Don’t ask for all inputs at once.

@@ -6,15 +6,15 @@ Write a program to compute the value of an investment compounded over time. The 
 
 The formula you’ll use for this is
 
-![Determining Compound Interest](determining-compound-interest.png)
+![Determining Compound Interest](13-determining-compound-interest.png)
 
 where
 
-* ```P``` is the principal amount.
-* ```r``` is the annual rate of interest.
-* ```t``` is the number of years the amount is invested.
-* ```n``` is the number of times the interest is compounded per year.
-* ```A``` is the amount at the end of the investment.
+- `P` is the principal amount.
+- `r` is the annual rate of interest.
+- `t` is the number of years the amount is invested.
+- `n` is the number of times the interest is compounded per year.
+- `A` is the amount at the end of the investment.
 
 ### Example Output
 
@@ -28,6 +28,6 @@ $1500 invested at 4.3% for 6 years compounded 4 times per year is $1938.84.
 
 ### Constraints
 
-* Prompt for the rate as a percentage (like 15, not .15). Divide the input by 100 in your program.
-* Ensure that fractions of a cent are rounded up to the next penny.
-* Ensure that the output is formatted as money.
+- Prompt for the rate as a percentage (like 15, not .15). Divide the input by 100 in your program.
+- Ensure that fractions of a cent are rounded up to the next penny.
+- Ensure that the output is formatted as money.

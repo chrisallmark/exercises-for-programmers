@@ -4,7 +4,7 @@ When you’re looking at results, you’ll want to be able to sort them so you c
 
 Given the following data set
 
-![Sorting Records](sorting-records.png)
+![Sorting Records](39-sorting-records.png)
 
 create a program that sorts all employees by last name and prints them to the screen in a tabular format.
 
@@ -23,4 +23,4 @@ Tou Xiong           | Software Engineer | 2016-10-05
 
 ### Constraint
 
-* Implement the data using a list of maps.
+- Implement the data using a list of maps.

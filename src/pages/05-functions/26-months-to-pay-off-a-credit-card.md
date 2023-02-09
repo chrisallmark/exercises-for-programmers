@@ -6,13 +6,13 @@ Write a program that will help you determine how many months it will take to pay
 
 The formula for this is
 
-![Months to Pay Off a Credit Card](months-to-pay-off-a-credit-card.png)
+![Months to Pay Off a Credit Card](26-months-to-pay-off-a-credit-card.png)
 
 where
 
-* ```n``` is the number of months.
-* ```i``` is the daily rate (APR divided by 365). * b is the balance.
-* ```p``` is the monthly payment.
+- `n` is the number of months.
+- `i` is the daily rate (APR divided by 365). \* b is the balance.
+- `p` is the monthly payment.
 
 ### Example Output
 
@@ -25,7 +25,7 @@ It will take you 70 months to pay off this card.
 
 ### Constraints
 
-* Prompt for the card’s APR. Do the division internally.
-* Prompt for the APR as a percentage, not a decimal.
-* Use a function called ```calculateMonthsUntilPaidOff```, which accepts the balance, the APR, and the monthly payment as its arguments and returns the number of months. Don’t access any of these values outside the function.
-* Round fractions of a cent up to the next cent.
+- Prompt for the card’s APR. Do the division internally.
+- Prompt for the APR as a percentage, not a decimal.
+- Use a function called `calculateMonthsUntilPaidOff`, which accepts the balance, the APR, and the monthly payment as its arguments and returns the number of months. Don’t access any of these values outside the function.
+- Round fractions of a cent up to the next cent.

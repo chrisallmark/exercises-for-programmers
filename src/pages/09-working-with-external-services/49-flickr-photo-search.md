@@ -8,7 +8,7 @@ Create a program with a graphical interface that takes in a search string and di
 
 Your program should display the photographs like this:
 
-![Flickr Photo Search](flickr-photo-search.png)
+![Flickr Photo Search](49-flickr-photo-search.png)
 
 ### Constraints
 
