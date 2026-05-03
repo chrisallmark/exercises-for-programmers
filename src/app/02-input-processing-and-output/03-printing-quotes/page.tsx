@@ -1,3 +1,5 @@
+"use client";
+
 import { Solution } from "@/components";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
@@ -9,7 +11,7 @@ const PrintingQuotes = () => {
   });
   const [output, setOutput] = useState("");
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInput({ ...input, [event.target.name]: event.target.value });
+    setInput({ ...input, [event.target.name]: event.target.value.trim() });
   };
   return (
     <Solution category="Input, Processing & Output" exercise="Printing Quotes">
@@ -38,9 +40,7 @@ const PrintingQuotes = () => {
           <Button
             disabled={!input.quote.length || !input.quoter.length}
             fluid
-            onClick={() =>
-              setOutput(input.quoter + ' says, "' + input.quote + '"')
-            }
+            onClick={() => setOutput(`${input.quoter} says, "${input.quote}"`)}
           >
             Print Quote
           </Button>

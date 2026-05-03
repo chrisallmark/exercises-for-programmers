@@ -1,33 +1,34 @@
+"use client";
+
 import { Solution } from "@/components";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
-const SayingHello = () => {
+const CountingTheNumberOfCharacters = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   return (
-    <Solution category="Input, Processing & Output" exercise="Saying Hello">
+    <Solution
+      category="Input, Processing & Output"
+      exercise="Counting the Number of Characters"
+    >
       <Grid stackable>
-        <Grid.Column width={14}>
+        <Grid.Column width={12}>
           <Input
             fluid
-            label="What is your name?"
-            onChange={(event) => setInput(event.target.value)}
-            placeholder="e.g. Brian"
+            label="What is the input string?"
+            onChange={(event) => setInput(event.target.value.trim())}
+            placeholder="e.g. Homer"
             value={input}
           />
         </Grid.Column>
-        <Grid.Column width={2}>
+        <Grid.Column width={4}>
           <Button
             disabled={!input.length}
             fluid
-            onClick={() =>
-              setOutput(
-                input.length ? `Hello, ${input}, nice to meet you!` : ""
-              )
-            }
+            onClick={() => setOutput(`${input} has ${input.length} characters.`)}
           >
-            Say Hello
+            Count the Number of Characters
           </Button>
         </Grid.Column>
         {output && (
@@ -40,4 +41,4 @@ const SayingHello = () => {
   );
 };
 
-export default SayingHello;
+export default CountingTheNumberOfCharacters;

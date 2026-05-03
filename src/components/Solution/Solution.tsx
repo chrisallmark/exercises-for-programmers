@@ -1,7 +1,9 @@
+"use client";
+
 import { Header, Divider, Button, Icon } from "semantic-ui-react";
 import { SolutionProps } from "./Solution.types";
 import { PropsWithChildren } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Solution = ({
   category,

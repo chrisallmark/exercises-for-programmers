@@ -1,0 +1,38 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Purpose
+
+Interactive web app with solutions to "Exercises for Programmers" by Brian P. Hogan. 57 exercises across 10 chapters (02–10), each implemented as a Next.js page.
+
+## Commands
+
+```bash
+npm run dev      # Start development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint
+```
+
+No test framework is configured.
+
+## Architecture
+
+**Tech stack**: Next.js 16, React 19, TypeScript 5 (strict), Semantic UI React 3 (beta), styled-components 6.
+
+**Routing**: App Router. Exercise pages live under `src/app/[chapter]/[exercise-name]/page.tsx`. The chapter folders use numeric prefixes matching the book (e.g. `02-input-processing-and-output/`). The home page is `src/app/page.tsx`.
+
+**Semantic UI CSS**: The CSS is kept as a local file at `src/app/semantic.css` (with bundled fonts/images under `src/app/themes/`) rather than imported from the `semantic-ui-css` npm package. This is required because the npm package's minified CSS contains a selector that Turbopack's strict CSS parser rejects.
+
+**Component hierarchy**:
+- `Exercises` — category container; provides color and folder path via `ExercisesContext` to children (`'use client'`)
+- `Exercise` — individual link on the home page; reads context for its href (`'use client'`)
+- `Solution` — page wrapper for every exercise page; handles shared layout and back-navigation via `useRouter` from `next/navigation` (`'use client'`)
+
+**Patterns**:
+- All three components and all exercise pages are client components (`'use client'`) due to React hooks usage.
+- Each exercise page manages its own state with `useState` and renders a `<Solution>` wrapper.
+- Component prop types live in co-located `.types.ts` files.
+- `src/components/index.ts` re-exports all components; prefer importing from there.
+- Path alias `@/*` maps to `src/*`.

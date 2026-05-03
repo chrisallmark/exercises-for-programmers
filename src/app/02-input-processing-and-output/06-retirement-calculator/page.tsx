@@ -1,3 +1,5 @@
+"use client";
+
 import { Solution } from "@/components";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
@@ -21,6 +23,8 @@ const RetirementCalculator = () => {
           <Input
             fluid
             label="What is your current age?"
+            min="0"
+            max="120"
             name="current"
             onChange={handleInput}
             placeholder="e.g. 25"
@@ -31,7 +35,9 @@ const RetirementCalculator = () => {
         <Grid.Column width={6}>
           <Input
             fluid
-            label="At what age would you like to retire? "
+            label="At what age would you like to retire?"
+            min="0"
+            max="120"
             name="retirement"
             onChange={handleInput}
             placeholder="e.g. 65"
@@ -44,14 +50,17 @@ const RetirementCalculator = () => {
             disabled={!input.current || !input.retirement}
             fluid
             onClick={() => {
+              const current = Number.parseInt(input.current);
+              const retirement = Number.parseInt(input.retirement);
+              if (isNaN(current) || isNaN(retirement)) return;
+              if (retirement <= current) {
+                setOutput("Your retirement age must be greater than your current age.");
+                return;
+              }
               const year = new Date().getFullYear();
-              const years =
-                Number.parseInt(input.retirement) -
-                Number.parseInt(input.current);
+              const years = retirement - current;
               setOutput(
-                `You have ${years} years left until you can retire. It's ${year}, so you can retire in ${
-                  year + years
-                }.`
+                `You have ${years} years left until you can retire. It's ${year}, so you can retire in ${year + years}.`
               );
             }}
           >

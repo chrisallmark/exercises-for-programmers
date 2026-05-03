@@ -1,5 +1,7 @@
+"use client";
+
 import { Solution } from "@/components";
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
 const MadLib = () => {
@@ -11,8 +13,9 @@ const MadLib = () => {
   });
   const [output, setOutput] = useState("");
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInput({ ...input, [event.target.name]: event.target.value });
+    setInput({ ...input, [event.target.name]: event.target.value.trim() });
   };
+  const isDisabled = !input.noun || !input.verb || !input.adjective || !input.adverb;
   return (
     <Solution category="Input, Processing & Output" exercise="Mad Lib">
       <Grid stackable>
@@ -58,12 +61,7 @@ const MadLib = () => {
         </Grid.Column>
         <Grid.Column width={2}>
           <Button
-            disabled={
-              !input.noun.length ||
-              !input.verb.length ||
-              !input.adjective.length ||
-              !input.adverb.length
-            }
+            disabled={isDisabled}
             fluid
             onClick={() =>
               setOutput(

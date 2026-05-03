@@ -39,7 +39,7 @@ export default function Home() {
           page="12-computing-simple-interest"
         />
         <Exercise
-          name="Computing Simple Interest"
+          name="Determining Compound Interest"
           page="13-determining-compound-interest"
         />
       </Exercises>
@@ -52,7 +52,7 @@ export default function Home() {
         <Exercise name="Password Validation" page="15-password-validation" />
         <Exercise name="Legal Driving Age" page="16-legal-driving-age" />
         <Exercise
-          name="Blood Alchohol Calculator"
+          name="Blood Alcohol Calculator"
           page="17-blood-alchohol-calculator"
         />
         <Exercise

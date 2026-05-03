@@ -1,3 +1,5 @@
+"use client";
+
 import { Solution } from "@/components";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
@@ -7,7 +9,7 @@ const SimpleMath = () => {
     first: "",
     second: "",
   });
-  const [output, setOutput] = useState(new Array<string>());
+  const [output, setOutput] = useState<string[]>([]);
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
@@ -43,23 +45,23 @@ const SimpleMath = () => {
             onClick={() => {
               const first = Number.parseFloat(input.first);
               const second = Number.parseFloat(input.second);
+              if (isNaN(first) || isNaN(second)) return;
               setOutput([
                 `${input.first} + ${input.second} = ${first + second}`,
                 `${input.first} - ${input.second} = ${first - second}`,
                 `${input.first} * ${input.second} = ${first * second}`,
-                `${input.first} / ${input.second} = ${first / second}`,
+                `${input.first} / ${input.second} = ${second !== 0 ? first / second : "undefined"}`,
               ]);
             }}
           >
             Simple Math
           </Button>
         </Grid.Column>
-        {output &&
-          output.map((line) => (
-            <Grid.Column key={line} textAlign="center" width={4}>
-              {line}
-            </Grid.Column>
-          ))}
+        {output.map((line, index) => (
+          <Grid.Column key={index} textAlign="center" width={4}>
+            {line}
+          </Grid.Column>
+        ))}
       </Grid>
     </Solution>
   );
