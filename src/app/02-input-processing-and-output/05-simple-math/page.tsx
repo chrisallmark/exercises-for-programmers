@@ -57,11 +57,13 @@ const SimpleMath = () => {
             Simple Math
           </Button>
         </Grid.Column>
-        {output.map((line, index) => (
-          <Grid.Column key={index} textAlign="center" width={4}>
-            {line}
+        {output.length > 0 && (
+          <Grid.Column width={16}>
+            {output.map((line, index) => (
+              <div key={index}>{line}</div>
+            ))}
           </Grid.Column>
-        ))}
+        )}
       </Grid>
     </Solution>
   );
