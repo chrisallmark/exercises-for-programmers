@@ -33,6 +33,10 @@ No test framework is configured.
 **Patterns**:
 - All three components and all exercise pages are client components (`'use client'`) due to React hooks usage.
 - Each exercise page manages its own state with `useState` and renders a `<Solution>` wrapper.
+- `Exercise` uses `next/link`'s `<Link>` for navigation (not `Grid.Column as="a"`, which doesn't produce a real anchor).
+- Text inputs call `.trim()` on `event.target.value` in `onChange` so whitespace-only strings don't pass the empty-check guard on the submit button.
+- Number-input pages guard against `isNaN` after parsing and handle domain errors (e.g. division by zero, retirement age ≤ current age) with a user-facing message rather than a crash.
 - Component prop types live in co-located `.types.ts` files.
 - `src/components/index.ts` re-exports all components; prefer importing from there.
 - Path alias `@/*` maps to `src/*`.
+- `.npmrc` sets `legacy-peer-deps=true` — required because `semantic-ui-react@3.0.0-beta.2` declares peer deps against React 16–18, but the project uses React 19.
