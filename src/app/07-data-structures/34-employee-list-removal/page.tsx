@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/34-employee-list-removal.md";
 import { useState } from "react";
 import { Button, Grid, List } from "semantic-ui-react";
 
@@ -21,7 +20,7 @@ const EmployeeListRemoval = () => {
 
   return (
     <Solution category="Data Structures" exercise="Employee List Removal"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/34-employee-list-removal.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

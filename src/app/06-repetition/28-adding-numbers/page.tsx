@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/06-repetition/28-adding-numbers.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -17,7 +16,7 @@ const AddingNumbers = () => {
 
   return (
     <Solution category="Repetition" exercise="Adding Numbers"
-      markdown={markdown}
+      markdown="/exercises/06-repetition/28-adding-numbers.md"
     >
       <Grid stackable>
         {inputs.map((val, i) => (

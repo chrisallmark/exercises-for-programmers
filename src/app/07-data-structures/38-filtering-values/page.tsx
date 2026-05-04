@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/38-filtering-values.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -14,7 +13,7 @@ const FilteringValues = () => {
   const [error, setError] = useState<string | null>(null);
   return (
     <Solution category="Data Structures" exercise="Filtering Values"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/38-filtering-values.md"
     >
       <Grid stackable>
         <Grid.Column width={12}>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/08-working-with-files/42-parsing-a-data-file.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -56,7 +55,7 @@ const ParsingADataFile = () => {
 
   return (
     <Solution category="Working with Files" exercise="Parsing a Data File"
-      markdown={markdown}
+      markdown="/exercises/08-working-with-files/42-parsing-a-data-file.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

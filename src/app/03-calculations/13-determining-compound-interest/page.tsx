@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/03-calculations/13-determining-compound-interest.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -19,7 +18,7 @@ const DeterminingCompoundInterest = () => {
   const isDisabled = !input.principal || !input.rate || !input.years || !input.periods;
   return (
     <Solution category="Calculations" exercise="Determining Compound Interest"
-      markdown={markdown}
+      markdown="/exercises/03-calculations/13-determining-compound-interest.md"
     >
       <Grid stackable>
         <Grid.Column width={4}>

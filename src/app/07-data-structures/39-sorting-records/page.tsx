@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/39-sorting-records.md";
 import { Table } from "semantic-ui-react";
 
 type Employee = { first: string; last: string; position: string; separationDate: string };
@@ -20,7 +19,7 @@ const sorted = [...EMPLOYEES].sort((a, b) => a.last.localeCompare(b.last));
 
 const SortingRecords = () => (
   <Solution category="Data Structures" exercise="Sorting Records"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/39-sorting-records.md"
     >
     <Table celled>
       <Table.Header>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/10-full-programs/53-todo-list.md";
 import { useEffect, useState } from "react";
 import { Button, Grid, Input, List } from "semantic-ui-react";
 
@@ -36,7 +35,7 @@ const TodoList = () => {
 
   return (
     <Solution category="Full Programs" exercise="Todo List"
-      markdown={markdown}
+      markdown="/exercises/10-full-programs/53-todo-list.md"
     >
       <Grid stackable>
         <Grid.Column width={12}>

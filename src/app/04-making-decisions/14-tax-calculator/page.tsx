@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/04-making-decisions/14-tax-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -13,7 +12,7 @@ const TaxCalculator = () => {
   const [output, setOutput] = useState<{ subtotal: number; tax: number; total: number } | null>(null);
   return (
     <Solution category="Making Decisions" exercise="Tax Calculator"
-      markdown={markdown}
+      markdown="/exercises/04-making-decisions/14-tax-calculator.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>

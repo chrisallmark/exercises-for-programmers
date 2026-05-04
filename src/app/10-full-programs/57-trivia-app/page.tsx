@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/10-full-programs/57-trivia-app.md";
 import { useState } from "react";
 import { Button, Grid, Message } from "semantic-ui-react";
 
@@ -55,7 +54,7 @@ const TriviaApp = () => {
 
   return (
     <Solution category="Full Programs" exercise="Trivia App"
-      markdown={markdown}
+      markdown="/exercises/10-full-programs/57-trivia-app.md"
     >
       <Grid stackable>
         {state === "idle" && (

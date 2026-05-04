@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/03-calculations/07-area-of-a-rectangular-room.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -15,7 +14,7 @@ const AreaOfARectangularRoom = () => {
   };
   return (
     <Solution category="Calculations" exercise="Area of a Rectangular Room"
-      markdown={markdown}
+      markdown="/exercises/03-calculations/07-area-of-a-rectangular-room.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>

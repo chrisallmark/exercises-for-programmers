@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/05-functions/24-anagram-checker.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -18,7 +17,7 @@ const AnagramChecker = () => {
   };
   return (
     <Solution category="Functions" exercise="Anagram Checker"
-      markdown={markdown}
+      markdown="/exercises/05-functions/24-anagram-checker.md"
     >
       <Grid stackable>
         <Grid.Column width={7}>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/03-calculations/12-computing-simple-interest.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -13,7 +12,7 @@ const ComputingSimpleInterest = () => {
   };
   return (
     <Solution category="Calculations" exercise="Computing Simple Interest"
-      markdown={markdown}
+      markdown="/exercises/03-calculations/12-computing-simple-interest.md"
     >
       <Grid stackable>
         <Grid.Column width={5}>

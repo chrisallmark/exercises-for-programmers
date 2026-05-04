@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/04-making-decisions/23-troubleshooting-car-issues.md";
 import { useState } from "react";
 import { Button, Grid, Message } from "semantic-ui-react";
 
@@ -41,7 +40,7 @@ const TroubleshootingCarIssues = () => {
 
   return (
     <Solution category="Making Decisions" exercise="Troubleshooting Car Issues"
-      markdown={markdown}
+      markdown="/exercises/04-making-decisions/23-troubleshooting-car-issues.md"
     >
       <Grid stackable>
         {!current && (

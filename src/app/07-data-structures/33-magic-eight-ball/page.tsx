@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/33-magic-eight-ball.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -32,7 +31,7 @@ const MagicEightBall = () => {
   const [response, setResponse] = useState<string | null>(null);
   return (
     <Solution category="Data Structures" exercise="Magic Eight Ball"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/33-magic-eight-ball.md"
     >
       <Grid stackable>
         <Grid.Column width={16} textAlign="center">

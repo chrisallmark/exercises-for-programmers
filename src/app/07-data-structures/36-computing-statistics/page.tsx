@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/36-computing-statistics.md";
 import { useState } from "react";
 import { Button, Grid, Input, Table } from "semantic-ui-react";
 
@@ -29,7 +28,7 @@ const ComputingStatistics = () => {
 
   return (
     <Solution category="Data Structures" exercise="Computing Statistics"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/36-computing-statistics.md"
     >
       <Grid stackable>
         <Grid.Column width={12}>

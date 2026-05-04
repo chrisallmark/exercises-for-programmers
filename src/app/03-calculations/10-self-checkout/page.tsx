@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/03-calculations/10-self-checkout.md";
 import { useState } from "react";
 import { Button, Grid, Input, Table } from "semantic-ui-react";
 
@@ -33,7 +32,7 @@ const SelfCheckout = () => {
 
   return (
     <Solution category="Calculations" exercise="Self Checkout"
-      markdown={markdown}
+      markdown="/exercises/03-calculations/10-self-checkout.md"
     >
       <Grid stackable>
         {items.map((item, i) => (

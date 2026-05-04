@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/06-repetition/31-karvonen-heart-rate.md";
 import { useState } from "react";
 import { Button, Grid, Input, Table } from "semantic-ui-react";
 
@@ -18,7 +17,7 @@ const KarvonenHeartRate = () => {
   };
   return (
     <Solution category="Repetition" exercise="Karvonen Heart Rate"
-      markdown={markdown}
+      markdown="/exercises/06-repetition/31-karvonen-heart-rate.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>

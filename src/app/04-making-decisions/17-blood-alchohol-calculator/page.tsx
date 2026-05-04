@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/04-making-decisions/17-blood-alchohol-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -22,7 +21,7 @@ const BloodAlcoholCalculator = () => {
   const isDisabled = !input.weight || !input.drinks || !input.abv || !input.hours;
   return (
     <Solution category="Making Decisions" exercise="Blood Alcohol Calculator"
-      markdown={markdown}
+      markdown="/exercises/04-making-decisions/17-blood-alchohol-calculator.md"
     >
       <Grid stackable>
         <Grid.Column width={4}>

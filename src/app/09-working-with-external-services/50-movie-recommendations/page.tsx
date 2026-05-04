@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/09-working-with-external-services/50-movie-recommendations.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -52,7 +51,7 @@ const MovieRecommendations = () => {
     <Solution
       category="Working with External Services"
       exercise="Movie Recommendations"
-      markdown={markdown}
+      markdown="/exercises/09-working-with-external-services/50-movie-recommendations.md"
     >
       <Grid stackable>
         <Grid.Column width={10}>

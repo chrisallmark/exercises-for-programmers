@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/08-working-with-files/45-word-finder.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -23,7 +22,7 @@ const WordFinder = () => {
 
   return (
     <Solution category="Working with Files" exercise="Word Finder"
-      markdown={markdown}
+      markdown="/exercises/08-working-with-files/45-word-finder.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

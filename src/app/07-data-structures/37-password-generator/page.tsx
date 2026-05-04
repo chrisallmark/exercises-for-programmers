@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/07-data-structures/37-password-generator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -31,7 +30,7 @@ const PasswordGenerator = () => {
   const isDisabled = !input.length || !input.special || !input.digits;
   return (
     <Solution category="Data Structures" exercise="Password Generator"
-      markdown={markdown}
+      markdown="/exercises/07-data-structures/37-password-generator.md"
     >
       <Grid stackable>
         <Grid.Column width={5}>

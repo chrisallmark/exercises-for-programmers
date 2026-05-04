@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/09-working-with-external-services/48-grabbing-the-weather.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -41,7 +40,7 @@ const GrabbingTheWeather = () => {
     <Solution
       category="Working with External Services"
       exercise="Grabbing the Weather"
-      markdown={markdown}
+      markdown="/exercises/09-working-with-external-services/48-grabbing-the-weather.md"
     >
       <Grid stackable>
         <Grid.Column width={10}>

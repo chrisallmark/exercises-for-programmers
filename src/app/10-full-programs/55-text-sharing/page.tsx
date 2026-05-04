@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/10-full-programs/55-text-sharing.md";
 import { useEffect, useState } from "react";
 import { Button, Grid, Label, Message } from "semantic-ui-react";
 
@@ -80,7 +79,7 @@ const TextSharing = () => {
 
   return (
     <Solution category="Full Programs" exercise="Text Sharing"
-      markdown={markdown}
+      markdown="/exercises/10-full-programs/55-text-sharing.md"
     >
       <Grid stackable>
         {view === "compose" && (

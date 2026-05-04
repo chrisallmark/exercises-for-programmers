@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/06-repetition/32-guess-the-number-game.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -41,7 +40,7 @@ const GuessTheNumberGame = () => {
 
   return (
     <Solution category="Repetition" exercise="Guess the Number Game"
-      markdown={markdown}
+      markdown="/exercises/06-repetition/32-guess-the-number-game.md"
     >
       <Grid stackable>
         {secret === null ? (

@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/08-working-with-files/41-name-sorter.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -29,7 +28,7 @@ const NameSorter = () => {
 
   return (
     <Solution category="Working with Files" exercise="Name Sorter"
-      markdown={markdown}
+      markdown="/exercises/08-working-with-files/41-name-sorter.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

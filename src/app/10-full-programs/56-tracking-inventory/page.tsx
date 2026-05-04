@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/10-full-programs/56-tracking-inventory.md";
 import { useEffect, useState } from "react";
 import { Button, Grid, Input, Message, Table } from "semantic-ui-react";
 
@@ -63,7 +62,7 @@ const TrackingInventory = () => {
 
   return (
     <Solution category="Full Programs" exercise="Tracking Inventory"
-      markdown={markdown}
+      markdown="/exercises/10-full-programs/56-tracking-inventory.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/02-input-processing-and-output/05-simple-math.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -16,7 +15,7 @@ const SimpleMath = () => {
   };
   return (
     <Solution category="Input, Processing & Output" exercise="Simple Math"
-      markdown={markdown}
+      markdown="/exercises/02-input-processing-and-output/05-simple-math.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>

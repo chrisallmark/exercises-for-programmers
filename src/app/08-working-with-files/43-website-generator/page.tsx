@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/08-working-with-files/43-website-generator.md";
 import { useState } from "react";
 import { Button, Checkbox, Grid, Input } from "semantic-ui-react";
 
@@ -48,7 +47,7 @@ const WebsiteGenerator = () => {
 
   return (
     <Solution category="Working with Files" exercise="Website Generator"
-      markdown={markdown}
+      markdown="/exercises/08-working-with-files/43-website-generator.md"
     >
       <Grid stackable>
         <Grid.Column width={8}>

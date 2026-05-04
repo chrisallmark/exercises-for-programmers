@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/06-repetition/29-handling-bad-input.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -21,7 +20,7 @@ const HandlingBadInput = () => {
 
   return (
     <Solution category="Repetition" exercise="Handling Bad Input"
-      markdown={markdown}
+      markdown="/exercises/06-repetition/29-handling-bad-input.md"
     >
       <Grid stackable>
         <Grid.Column width={12}>

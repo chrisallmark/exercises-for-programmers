@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/08-working-with-files/46-word-frequency-finder.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -31,7 +30,7 @@ const WordFrequencyFinder = () => {
 
   return (
     <Solution category="Working with Files" exercise="Word Frequency Finder"
-      markdown={markdown}
+      markdown="/exercises/08-working-with-files/46-word-frequency-finder.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

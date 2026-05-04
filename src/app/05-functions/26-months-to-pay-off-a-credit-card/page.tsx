@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/05-functions/26-months-to-pay-off-a-credit-card.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -20,7 +19,7 @@ const MonthsToPayOffACreditCard = () => {
   const isDisabled = !input.balance || !input.apr || !input.payment;
   return (
     <Solution category="Functions" exercise="Months to Pay Off a Credit Card"
-      markdown={markdown}
+      markdown="/exercises/05-functions/26-months-to-pay-off-a-credit-card.md"
     >
       <Grid stackable>
         <Grid.Column width={5}>

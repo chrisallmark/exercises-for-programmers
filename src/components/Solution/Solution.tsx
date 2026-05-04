@@ -2,8 +2,8 @@
 
 import { Button, Divider, Header, Icon, Modal } from "semantic-ui-react";
 import { SolutionProps } from "./Solution.types";
-import { PropsWithChildren, useMemo, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { PropsWithChildren, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { marked, Renderer } from "marked";
 
 const Solution = ({
@@ -13,19 +13,28 @@ const Solution = ({
   exercise,
 }: PropsWithChildren<SolutionProps>) => {
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [content, setContent] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (open && markdown && content === null) {
+      fetch(markdown)
+        .then((r) => r.text())
+        .then(setContent)
+        .catch(() => setContent("Failed to load."));
+    }
+  }, [open, markdown, content]);
 
   const html = useMemo(() => {
-    if (!markdown) return "";
-    const chapter = pathname?.split("/")[1] ?? "";
+    if (!content) return "";
+    const chapter = markdown?.split("/")[2] ?? "";
     const renderer = new Renderer();
     renderer.image = ({ href, title, text }) => {
       const src = href?.startsWith("http") ? href : `/exercises/${chapter}/${href}`;
       return `<img src="${src}" alt="${text ?? ""}"${title ? ` title="${title}"` : ""} style="max-width:100%">`;
     };
-    return marked.parse(markdown, { renderer }) as string;
-  }, [markdown, pathname]);
+    return marked.parse(content, { renderer }) as string;
+  }, [content, markdown]);
 
   return (
     <>

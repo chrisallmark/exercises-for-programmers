@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/09-working-with-external-services/47-whos-in-space.md";
 import { useState } from "react";
 import { Button, Grid, Message, Table } from "semantic-ui-react";
 
@@ -29,7 +28,7 @@ const WhosInSpace = () => {
 
   return (
     <Solution category="Working with External Services" exercise="Who's in Space?"
-      markdown={markdown}
+      markdown="/exercises/09-working-with-external-services/47-whos-in-space.md"
     >
       <Grid stackable>
         <Grid.Column width={16}>

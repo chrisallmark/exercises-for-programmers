@@ -1,7 +1,6 @@
 "use client";
 
 import { Solution } from "@/components";
-import markdown from "@/exercises/02-input-processing-and-output/06-retirement-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -19,7 +18,7 @@ const RetirementCalculator = () => {
       category="Input, Processing & Output"
       exercise="Retirement Calculator"
     
-      markdown={markdown}
+      markdown="/exercises/02-input-processing-and-output/06-retirement-calculator.md"
     >
       <Grid stackable>
         <Grid.Column width={6}>
