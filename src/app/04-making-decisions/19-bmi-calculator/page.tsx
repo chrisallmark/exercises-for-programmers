@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/19-bmi-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -11,7 +12,9 @@ const BmiCalculator = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
   return (
-    <Solution category="Making Decisions" exercise="BMI Calculator">
+    <Solution category="Making Decisions" exercise="BMI Calculator"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={6}>
           <Input

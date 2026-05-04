@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/09-working-with-external-services/49-flickr-photo-search.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -29,7 +30,9 @@ const FlickrPhotoSearch = () => {
   };
 
   return (
-    <Solution category="Working with External Services" exercise="Flickr Photo Search">
+    <Solution category="Working with External Services" exercise="Flickr Photo Search"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={12}>
           <Input

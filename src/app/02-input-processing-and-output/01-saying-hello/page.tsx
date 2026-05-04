@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/02-input-processing-and-output/01-saying-hello.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -8,7 +9,11 @@ const SayingHello = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   return (
-    <Solution category="Input, Processing & Output" exercise="Saying Hello">
+    <Solution
+      category="Input, Processing & Output"
+      exercise="Saying Hello"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={14}>
           <Input

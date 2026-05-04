@@ -1,10 +1,13 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/09-working-with-external-services/51-pushing-notes-to-firebase.md";
 import { Grid, Message } from "semantic-ui-react";
 
 const PushingNotesToFirebase = () => (
-  <Solution category="Working with External Services" exercise="Pushing Notes to Firebase">
+  <Solution category="Working with External Services" exercise="Pushing Notes to Firebase"
+      markdown={markdown}
+    >
     <Grid stackable>
       <Grid.Column width={16}>
         <Message warning>

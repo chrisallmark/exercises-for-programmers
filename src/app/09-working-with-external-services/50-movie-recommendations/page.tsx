@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/09-working-with-external-services/50-movie-recommendations.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -25,7 +26,6 @@ const recommendation = (rating: string): string | null => {
 
 const MovieRecommendations = () => {
   const [title, setTitle] = useState("");
-  const [apiKey, setApiKey] = useState(process.env.NEXT_PUBLIC_OMDB_API_KEY ?? "");
   const [state, setState] = useState<State>("idle");
   const [movie, setMovie] = useState<MovieData | null>(null);
   const [error, setError] = useState("");
@@ -35,7 +35,6 @@ const MovieRecommendations = () => {
     setMovie(null);
     try {
       const params = new URLSearchParams({ title: title.trim() });
-      if (apiKey.trim()) params.set("key", apiKey.trim());
       const res = await fetch(`/api/movie?${params}`);
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Request failed");
@@ -47,11 +46,14 @@ const MovieRecommendations = () => {
     }
   };
 
-  const canSubmit = title.trim().length > 0 && (apiKey.trim().length > 0 || !!process.env.NEXT_PUBLIC_OMDB_API_KEY);
   const rec = movie ? recommendation(movie.imdbRating) : null;
 
   return (
-    <Solution category="Working with External Services" exercise="Movie Recommendations">
+    <Solution
+      category="Working with External Services"
+      exercise="Movie Recommendations"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={10}>
           <Input
@@ -60,21 +62,11 @@ const MovieRecommendations = () => {
             placeholder="e.g. Guardians of the Galaxy"
             value={title}
             onChange={(e) => { setTitle(e.target.value); setState("idle"); }}
-            onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" && canSubmit) search(); }}
+            onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" && title.trim()) search(); }}
           />
         </Grid.Column>
         <Grid.Column width={16}>
-          <Input
-            style={{ width: "100%", maxWidth: "420px" }}
-            label="OMDB API Key"
-            placeholder="Paste your API key here"
-            type="password"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Button primary loading={state === "loading"} disabled={!canSubmit} onClick={search}>
+          <Button primary loading={state === "loading"} disabled={!title.trim()} onClick={search}>
             Find Movie
           </Button>
         </Grid.Column>

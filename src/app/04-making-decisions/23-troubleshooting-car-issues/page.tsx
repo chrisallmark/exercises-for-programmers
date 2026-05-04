@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/23-troubleshooting-car-issues.md";
 import { useState } from "react";
 import { Button, Grid, Message } from "semantic-ui-react";
 
@@ -39,7 +40,9 @@ const TroubleshootingCarIssues = () => {
   const reset = () => { setCurrent(null); setHistory([]); };
 
   return (
-    <Solution category="Making Decisions" exercise="Troubleshooting Car Issues">
+    <Solution category="Making Decisions" exercise="Troubleshooting Car Issues"
+      markdown={markdown}
+    >
       <Grid stackable>
         {!current && (
           <Grid.Column width={16}>

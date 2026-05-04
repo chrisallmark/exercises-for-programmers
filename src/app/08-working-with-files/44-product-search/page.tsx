@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/08-working-with-files/44-product-search.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message, Table } from "semantic-ui-react";
 
@@ -42,7 +43,9 @@ const ProductSearch = () => {
   };
 
   return (
-    <Solution category="Working with Files" exercise="Product Search">
+    <Solution category="Working with Files" exercise="Product Search"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={16}>
           <p style={{ color: "#666", fontSize: "0.9em" }}>

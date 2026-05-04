@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/03-calculations/09-paint-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -13,7 +14,9 @@ const PaintCalculator = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
   return (
-    <Solution category="Calculations" exercise="Paint Calculator">
+    <Solution category="Calculations" exercise="Paint Calculator"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={5}>
           <Input

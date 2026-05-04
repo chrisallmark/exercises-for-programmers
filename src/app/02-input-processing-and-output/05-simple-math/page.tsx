@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/02-input-processing-and-output/05-simple-math.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -14,7 +15,9 @@ const SimpleMath = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
   return (
-    <Solution category="Input, Processing & Output" exercise="Simple Math">
+    <Solution category="Input, Processing & Output" exercise="Simple Math"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={6}>
           <Input

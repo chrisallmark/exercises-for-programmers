@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/15-password-validation.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -10,7 +11,9 @@ const PasswordValidation = () => {
   const [password, setPassword] = useState("");
   const [output, setOutput] = useState<string | null>(null);
   return (
-    <Solution category="Making Decisions" exercise="Password Validation">
+    <Solution category="Making Decisions" exercise="Password Validation"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={14}>
           <Input

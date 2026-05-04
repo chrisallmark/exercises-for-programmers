@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/09-working-with-external-services/48-grabbing-the-weather.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -16,7 +17,6 @@ const toC = (f: number) => ((f - 32) * 5) / 9;
 
 const GrabbingTheWeather = () => {
   const [city, setCity] = useState("");
-  const [apiKey, setApiKey] = useState(process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY ?? "");
   const [state, setState] = useState<State>("idle");
   const [data, setData] = useState<WeatherData | null>(null);
   const [error, setError] = useState("");
@@ -26,7 +26,6 @@ const GrabbingTheWeather = () => {
     setData(null);
     try {
       const params = new URLSearchParams({ city: city.trim() });
-      if (apiKey.trim()) params.set("key", apiKey.trim());
       const res = await fetch(`/api/weather?${params}`);
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Request failed");
@@ -38,10 +37,12 @@ const GrabbingTheWeather = () => {
     }
   };
 
-  const canSubmit = city.trim().length > 0 && (apiKey.trim().length > 0 || !!process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY);
-
   return (
-    <Solution category="Working with External Services" exercise="Grabbing the Weather">
+    <Solution
+      category="Working with External Services"
+      exercise="Grabbing the Weather"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={10}>
           <Input
@@ -50,21 +51,11 @@ const GrabbingTheWeather = () => {
             placeholder="e.g. Chicago, IL"
             value={city}
             onChange={(e) => { setCity(e.target.value); setState("idle"); }}
-            onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" && canSubmit) search(); }}
+            onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter" && city.trim()) search(); }}
           />
         </Grid.Column>
         <Grid.Column width={16}>
-          <Input
-            style={{ width: "100%", maxWidth: "420px" }}
-            label="OpenWeatherMap API Key"
-            placeholder="Paste your API key here"
-            type="password"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Button primary loading={state === "loading"} disabled={!canSubmit} onClick={search}>
+          <Button primary loading={state === "loading"} disabled={!city.trim()} onClick={search}>
             Get Weather
           </Button>
         </Grid.Column>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/06-repetition/32-guess-the-number-game.md";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -39,7 +40,9 @@ const GuessTheNumberGame = () => {
   const reset = () => { setSecret(null); setGuess(""); setGuesses(0); setHint(null); setWon(false); };
 
   return (
-    <Solution category="Repetition" exercise="Guess the Number Game">
+    <Solution category="Repetition" exercise="Guess the Number Game"
+      markdown={markdown}
+    >
       <Grid stackable>
         {secret === null ? (
           <>

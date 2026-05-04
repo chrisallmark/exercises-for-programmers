@@ -1,10 +1,13 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/09-working-with-external-services/52-creating-your-own-time-service.md";
 import { Grid, Message } from "semantic-ui-react";
 
 const CreatingYourOwnTimeService = () => (
-  <Solution category="Working with External Services" exercise="Creating Your Own Time Service">
+  <Solution category="Working with External Services" exercise="Creating Your Own Time Service"
+      markdown={markdown}
+    >
     <Grid stackable>
       <Grid.Column width={16}>
         <Message warning>

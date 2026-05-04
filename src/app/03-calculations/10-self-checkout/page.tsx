@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/03-calculations/10-self-checkout.md";
 import { useState } from "react";
 import { Button, Grid, Input, Table } from "semantic-ui-react";
 
@@ -31,7 +32,9 @@ const SelfCheckout = () => {
   const isDisabled = items.every((item) => !item.name || !item.price);
 
   return (
-    <Solution category="Calculations" exercise="Self Checkout">
+    <Solution category="Calculations" exercise="Self Checkout"
+      markdown={markdown}
+    >
       <Grid stackable>
         {items.map((item, i) => (
           <Grid.Row key={i}>

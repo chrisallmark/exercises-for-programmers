@@ -9,6 +9,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@types/marked": "^5.0.2",
+    "marked": "^18.0.3",
     "next": "^16.2.3",
     "react": "^19",
     "react-dom": "^19",
@@ -22,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.2.1",
+    "raw-loader": "^4.0.2",
     "typescript": "^5"
   }
 }

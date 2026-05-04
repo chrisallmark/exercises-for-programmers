@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/02-input-processing-and-output/03-printing-quotes.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -14,7 +15,9 @@ const PrintingQuotes = () => {
     setInput({ ...input, [event.target.name]: event.target.value.trim() });
   };
   return (
-    <Solution category="Input, Processing & Output" exercise="Printing Quotes">
+    <Solution category="Input, Processing & Output" exercise="Printing Quotes"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={7}>
           <Input

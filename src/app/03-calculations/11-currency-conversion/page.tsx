@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/03-calculations/11-currency-conversion.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -11,7 +12,9 @@ const CurrencyConversion = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
   return (
-    <Solution category="Calculations" exercise="Currency Conversion">
+    <Solution category="Calculations" exercise="Currency Conversion"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={6}>
           <Input

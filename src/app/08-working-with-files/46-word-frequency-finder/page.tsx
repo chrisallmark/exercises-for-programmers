@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/08-working-with-files/46-word-frequency-finder.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -29,7 +30,9 @@ const WordFrequencyFinder = () => {
   const labelWidth = entries ? Math.max(...entries.map((e) => e.word.length)) : 0;
 
   return (
-    <Solution category="Working with Files" exercise="Word Frequency Finder">
+    <Solution category="Working with Files" exercise="Word Frequency Finder"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={16}>
           <p>Paste text below to count word frequency:</p>

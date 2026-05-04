@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/22-comparing-numbers.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -12,7 +13,9 @@ const ComparingNumbers = () => {
   };
   const isDisabled = !input.a || !input.b || !input.c;
   return (
-    <Solution category="Making Decisions" exercise="Comparing Numbers">
+    <Solution category="Making Decisions" exercise="Comparing Numbers"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={5}>
           <Input

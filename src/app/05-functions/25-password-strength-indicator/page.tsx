@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/05-functions/25-password-strength-indicator.md";
 import { useState } from "react";
 import { Button, Grid, Input, Label } from "semantic-ui-react";
 
@@ -30,7 +31,9 @@ const PasswordStrengthIndicator = () => {
   const [password, setPassword] = useState("");
   const [output, setOutput] = useState<Strength | null>(null);
   return (
-    <Solution category="Functions" exercise="Password Strength Indicator">
+    <Solution category="Functions" exercise="Password Strength Indicator"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={12}>
           <Input

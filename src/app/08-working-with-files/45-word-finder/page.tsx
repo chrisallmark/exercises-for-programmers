@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/08-working-with-files/45-word-finder.md";
 import { useState } from "react";
 import { Button, Grid } from "semantic-ui-react";
 
@@ -21,7 +22,9 @@ const WordFinder = () => {
     (text.match(/\butilize\b/gi) ?? []).length;
 
   return (
-    <Solution category="Working with Files" exercise="Word Finder">
+    <Solution category="Working with Files" exercise="Word Finder"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={16}>
           <p>Paste your text below. All occurrences of <em>utilize</em> will be replaced with <em>use</em>:</p>

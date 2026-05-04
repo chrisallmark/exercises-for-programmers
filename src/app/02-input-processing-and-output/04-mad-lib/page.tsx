@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/02-input-processing-and-output/04-mad-lib.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -17,7 +18,9 @@ const MadLib = () => {
   };
   const isDisabled = !input.noun || !input.verb || !input.adjective || !input.adverb;
   return (
-    <Solution category="Input, Processing & Output" exercise="Mad Lib">
+    <Solution category="Input, Processing & Output" exercise="Mad Lib"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={7}>
           <Input

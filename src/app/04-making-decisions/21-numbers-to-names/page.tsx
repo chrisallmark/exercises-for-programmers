@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/21-numbers-to-names.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -13,7 +14,9 @@ const NumbersToNames = () => {
   const [number, setNumber] = useState("");
   const [output, setOutput] = useState<string | null>(null);
   return (
-    <Solution category="Making Decisions" exercise="Numbers to Names">
+    <Solution category="Making Decisions" exercise="Numbers to Names"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={14}>
           <Input

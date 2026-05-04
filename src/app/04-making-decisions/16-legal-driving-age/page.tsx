@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/16-legal-driving-age.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -10,7 +11,9 @@ const LegalDrivingAge = () => {
   const [age, setAge] = useState("");
   const [output, setOutput] = useState<string | null>(null);
   return (
-    <Solution category="Making Decisions" exercise="Legal Driving Age">
+    <Solution category="Making Decisions" exercise="Legal Driving Age"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={14}>
           <Input

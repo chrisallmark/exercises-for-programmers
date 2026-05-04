@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/02-input-processing-and-output/02-counting-the-number-of-characters.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -11,6 +12,8 @@ const CountingTheNumberOfCharacters = () => {
     <Solution
       category="Input, Processing & Output"
       exercise="Counting the Number of Characters"
+    
+      markdown={markdown}
     >
       <Grid stackable>
         <Grid.Column width={12}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/18-temperature-convertor.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -9,7 +10,9 @@ const TemperatureConverter = () => {
   const [unit, setUnit] = useState<"F" | "C">("F");
   const [output, setOutput] = useState<string | null>(null);
   return (
-    <Solution category="Making Decisions" exercise="Temperature Converter">
+    <Solution category="Making Decisions" exercise="Temperature Converter"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={8}>
           <Input

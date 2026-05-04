@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/04-making-decisions/20-multistate-sales-tax-calculator.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -21,7 +22,9 @@ const MultistatesalesTaxCalculator = () => {
   const showCounty = state === "WI";
 
   return (
-    <Solution category="Making Decisions" exercise="Multistate Sales Tax Calculator">
+    <Solution category="Making Decisions" exercise="Multistate Sales Tax Calculator"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={4}>
           <div className="ui labeled input fluid">

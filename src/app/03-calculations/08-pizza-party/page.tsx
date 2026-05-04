@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/03-calculations/08-pizza-party.md";
 import { useState } from "react";
 import { Button, Grid, Input } from "semantic-ui-react";
 
@@ -11,7 +12,9 @@ const PizzaParty = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
   return (
-    <Solution category="Calculations" exercise="Pizza Party">
+    <Solution category="Calculations" exercise="Pizza Party"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={5}>
           <Input

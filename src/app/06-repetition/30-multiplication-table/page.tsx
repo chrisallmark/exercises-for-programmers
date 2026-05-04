@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/06-repetition/30-multiplication-table.md";
 import { useState } from "react";
 import { Grid, Table } from "semantic-ui-react";
 
@@ -9,7 +10,9 @@ const NUMS = Array.from({ length: 13 }, (_, i) => i);
 const MultiplicationTable = () => {
   const [highlight, setHighlight] = useState(0);
   return (
-    <Solution category="Repetition" exercise="Multiplication Table">
+    <Solution category="Repetition" exercise="Multiplication Table"
+      markdown={markdown}
+    >
       <Grid stackable>
         <Grid.Column width={8}>
           <div className="ui labeled input">

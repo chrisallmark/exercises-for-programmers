@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/05-functions/27-validating-inputs.md";
 import { useState } from "react";
 import { Button, Grid, Input, Table } from "semantic-ui-react";
 
@@ -26,7 +27,9 @@ const ValidatingInputs = () => {
   };
   const isDisabled = !input.firstName && !input.lastName && !input.employeeId && !input.zip;
   return (
-    <Solution category="Functions" exercise="Validating Inputs">
+    <Solution category="Functions" exercise="Validating Inputs"
+      markdown={markdown}
+    >
       <Grid stackable>
         {(Object.keys(validators) as Array<keyof typeof validators>).map((field) => (
           <Grid.Column key={field} width={8}>

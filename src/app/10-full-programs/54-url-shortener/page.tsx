@@ -1,10 +1,13 @@
 "use client";
 
 import { Solution } from "@/components";
+import markdown from "@/exercises/10-full-programs/54-url-shortener.md";
 import { Grid, Message } from "semantic-ui-react";
 
 const UrlShortener = () => (
-  <Solution category="Full Programs" exercise="URL Shortener">
+  <Solution category="Full Programs" exercise="URL Shortener"
+      markdown={markdown}
+    >
     <Grid stackable>
       <Grid.Column width={16}>
         <Message warning>
