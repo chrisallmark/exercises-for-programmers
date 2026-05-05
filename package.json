@@ -2,6 +2,13 @@
   "name": "exercises-for-programmers",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.0.3",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,12 +33,5 @@
     "eslint": "^9",
     "eslint-config-next": "^16.2.1",
     "typescript": "^5"
-  },
-  "packageManager": "pnpm@11.0.3",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp",
-      "unrs-resolver"
-    ]
   }
 }
