@@ -1,7 +1,8 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./semantic.css";
 import { Container, Header } from "semantic-ui-react";
+import "./semantic.css";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           </Header>
           {children}
         </Container>
+        <SpeedInsights />
       </body>
     </html>
   );

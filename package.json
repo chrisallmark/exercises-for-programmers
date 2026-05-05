@@ -2,7 +2,6 @@
   "name": "exercises-for-programmers",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.0.3",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +10,7 @@
   },
   "dependencies": {
     "@types/marked": "^5.0.2",
+    "@vercel/speed-insights": "^2.0.0",
     "marked": "^18.0.3",
     "next": "^16.2.3",
     "react": "^19",
@@ -27,7 +27,5 @@
     "eslint-config-next": "^16.2.1",
     "typescript": "^5"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["sharp", "unrs-resolver"]
-  }
+  "packageManager": "pnpm@11.0.3"
 }
