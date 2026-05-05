@@ -1,6 +1,7 @@
 "use client";
 
 import { Solution } from "@/components";
+import Image from "next/image";
 import { useState } from "react";
 import { Button, Grid, Input, Message } from "semantic-ui-react";
 
@@ -65,12 +66,14 @@ const FlickrPhotoSearch = () => {
           <Grid.Column width={16}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "0.75em" }}>
               {photos.map((photo) => (
-                <a key={photo.link} href={photo.link} target="_blank" rel="noopener noreferrer">
-                  <img
+                <a key={photo.link} href={photo.link} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", position: "relative", height: "180px", borderRadius: "4px", overflow: "hidden" }}>
+                  <Image
                     src={photo.media.m}
                     alt={photo.title}
                     title={photo.title}
-                    style={{ width: "100%", height: "180px", objectFit: "cover", borderRadius: "4px", display: "block" }}
+                    fill
+                    style={{ objectFit: "cover" }}
                   />
                 </a>
               ))}

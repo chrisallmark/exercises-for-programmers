@@ -1,12 +1,10 @@
 "use client";
 
 import { Solution } from "@/components";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore, useState } from "react";
 import { Button, Grid, Label, Message } from "semantic-ui-react";
 
 const STORAGE_KEY = "efp-text-sharing";
-
-type Snippet = { slug: string; text: string };
 
 const generateSlug = (text: string): string => {
   let hash = 0;
@@ -30,15 +28,13 @@ const saveSnippet = (slug: string, text: string) => {
 type View = "compose" | "saved" | "view";
 
 const TextSharing = () => {
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
   const [view, setView] = useState<View>("compose");
   const [text, setText] = useState("");
   const [savedSlug, setSavedSlug] = useState("");
   const [retrieveSlug, setRetrieveSlug] = useState("");
   const [retrievedText, setRetrievedText] = useState("");
   const [notFound, setNotFound] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
 
   const save = () => {
     const slug = generateSlug(text.trim());

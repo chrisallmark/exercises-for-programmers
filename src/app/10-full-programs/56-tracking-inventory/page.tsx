@@ -1,28 +1,39 @@
 "use client";
 
 import { Solution } from "@/components";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore, useState } from "react";
 import { Button, Grid, Input, Message, Table } from "semantic-ui-react";
 
 const STORAGE_KEY = "efp-inventory";
 
 type Item = { id: number; name: string; serial: string; value: number };
 
+let _inventoryListeners: Array<() => void> = [];
+let _inventoryCache: Item[] | null = null;
+
+const inventoryStore = {
+  subscribe: (listener: () => void) => {
+    if (_inventoryCache === null) {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      _inventoryCache = stored !== null ? JSON.parse(stored) : [];
+    }
+    _inventoryListeners.push(listener);
+    return () => { _inventoryListeners = _inventoryListeners.filter((l) => l !== listener); };
+  },
+  getSnapshot: (): Item[] => _inventoryCache ?? [],
+  getServerSnapshot: (): Item[] => [],
+  set: (items: Item[]) => {
+    _inventoryCache = items;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    _inventoryListeners.forEach((l) => l());
+  },
+};
+
 const TrackingInventory = () => {
-  const [items, setItems] = useState<Item[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+  const items = useSyncExternalStore(inventoryStore.subscribe, inventoryStore.getSnapshot, inventoryStore.getServerSnapshot);
   const [form, setForm] = useState({ name: "", serial: "", value: "" });
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    setItems(stored ? JSON.parse(stored) : []);
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }, [items, mounted]);
 
   const add = () => {
     const value = parseFloat(form.value);
@@ -34,12 +45,12 @@ const TrackingInventory = () => {
       setError("Value must be a non-negative number.");
       return;
     }
-    setItems((prev) => [...prev, { id: Date.now(), name: form.name.trim(), serial: form.serial.trim(), value }]);
+    inventoryStore.set([...items, { id: Date.now(), name: form.name.trim(), serial: form.serial.trim(), value }]);
     setForm({ name: "", serial: "", value: "" });
     setError(null);
   };
 
-  const remove = (id: number) => setItems((prev) => prev.filter((i) => i.id !== id));
+  const remove = (id: number) => inventoryStore.set(items.filter((i) => i.id !== id));
 
   const downloadCsv = () => {
     const header = "Name,Serial Number,Value";

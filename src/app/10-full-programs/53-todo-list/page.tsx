@@ -1,37 +1,47 @@
 "use client";
 
 import { Solution } from "@/components";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore, useState } from "react";
 import { Button, Grid, Input, List } from "semantic-ui-react";
 
 const STORAGE_KEY = "efp-todo-list";
 
 type Task = { id: number; text: string };
 
+let _todoListeners: Array<() => void> = [];
+let _todoCache: Task[] | null = null;
+
+const todoStore = {
+  subscribe: (listener: () => void) => {
+    if (_todoCache === null) {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      _todoCache = stored !== null ? JSON.parse(stored) : [];
+    }
+    _todoListeners.push(listener);
+    return () => { _todoListeners = _todoListeners.filter((l) => l !== listener); };
+  },
+  getSnapshot: (): Task[] => _todoCache ?? [],
+  getServerSnapshot: (): Task[] => [],
+  set: (tasks: Task[]) => {
+    _todoCache = tasks;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    _todoListeners.forEach((l) => l());
+  },
+};
+
 const TodoList = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const tasks = useSyncExternalStore(todoStore.subscribe, todoStore.getSnapshot, todoStore.getServerSnapshot);
   const [input, setInput] = useState("");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    setTasks(stored ? JSON.parse(stored) : []);
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-  }, [tasks, mounted]);
 
   const addTask = () => {
     const text = input.trim();
     if (!text) return;
-    setTasks((prev) => [...prev, { id: Date.now(), text }]);
+    todoStore.set([...tasks, { id: Date.now(), text }]);
     setInput("");
   };
 
   const removeTask = (id: number) =>
-    setTasks((prev) => prev.filter((t) => t.id !== id));
+    todoStore.set(tasks.filter((t) => t.id !== id));
 
   return (
     <Solution category="Full Programs" exercise="Todo List"

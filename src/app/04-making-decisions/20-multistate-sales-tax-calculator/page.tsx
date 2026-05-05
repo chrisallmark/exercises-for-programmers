@@ -73,7 +73,7 @@ const MultistatesalesTaxCalculator = () => {
             fluid
             onClick={() => {
               const sub = parseFloat(subtotal);
-              let rateKey = state === "IL" ? "IL" : state === "WI" ? `WI_${county === "OTHER" ? "OTHER" : county}` : "OTHER";
+              const rateKey = state === "IL" ? "IL" : state === "WI" ? `WI_${county === "OTHER" ? "OTHER" : county}` : "OTHER";
               const rate = TAX_RATES[rateKey] ?? 0;
               const tax = Math.round(sub * rate * 100) / 100;
               setOutput({ tax, total: Math.round((sub + tax) * 100) / 100, rate });
