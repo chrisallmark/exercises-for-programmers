@@ -9,39 +9,83 @@ Interactive web app with solutions to "Exercises for Programmers" by Brian P. Ho
 ## Commands
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # ESLint
+pnpm dev         # Start development server
+pnpm build       # Production build
+pnpm start       # Start production server
+pnpm lint        # ESLint
 ```
 
 No test framework is configured.
 
+## Environment Variables
+
+Create `.env.local` with:
+```
+OPENWEATHERMAP_API_KEY=...   # Exercise 48
+OMDB_API_KEY=...             # Exercise 50
+```
+
+Exercises 47 (ISS) and 49 (Flickr) hit public APIs and need no key.
+
 ## Architecture
 
-**Tech stack**: Next.js 16, React 19, TypeScript 5 (strict), Semantic UI React 3 (beta), styled-components 6, `marked` (for markdown rendering).
+**Tech stack**: Next.js 16 (App Router, Turbopack), React 19, TypeScript 5 (strict), Semantic UI React 3 (beta), styled-components 6, `marked` (markdown rendering).
 
-**Routing**: App Router. Exercise pages live under `src/app/[chapter]/[exercise-name]/page.tsx`. The chapter folders use numeric prefixes matching the book (e.g. `02-input-processing-and-output/`). The home page is `src/app/page.tsx`.
+**Routing**: Exercise pages live at `src/app/[chapter]/[exercise-name]/page.tsx`. Chapter folders use numeric prefixes matching the book (e.g. `02-input-processing-and-output/`).
 
-**Semantic UI CSS**: The CSS is kept as a local file at `src/app/semantic.css` (with bundled fonts/images under `src/app/themes/`) rather than imported from the `semantic-ui-css` npm package. This is required because the npm package's minified CSS contains a selector that Turbopack's strict CSS parser rejects.
+**All components and pages are `'use client'`** — React hooks are used throughout; there is no server-rendered exercise UI.
 
-**Component hierarchy**:
-- `Exercises` — category container; provides color and folder path via `ExercisesContext` to children (`'use client'`)
-- `Exercise` — individual link on the home page; reads context for its href (`'use client'`)
-- `Solution` — page wrapper for every exercise page; fetches and renders a markdown problem statement (passed via `markdown` prop) into a modal on demand; handles back-navigation via `useRouter` from `next/navigation` (`'use client'`)
+### Component hierarchy
 
-**API routes**: `src/app/api/` contains Next.js route handlers that proxy external services — weather, Flickr, movie recommendations, and ISS occupancy — used by exercises in chapters 09–10.
+- `Exercises` — category container; provides `color` and `folder` via `ExercisesContext` to children
+- `Exercise` — reads context to build its `<Link href>` dynamically; uses `next/link`, not `Grid.Column as="a"`
+- `Solution` — page wrapper; renders a back button (`useRouter().back()`) and an info icon that lazily fetches and renders a markdown problem statement into a modal on demand
 
-**Patterns**:
-- All three components and all exercise pages are client components (`'use client'`) due to React hooks usage.
-- Each exercise page manages its own state with `useState` and renders a `<Solution>` wrapper.
-- Output state starts as `null` and is conditionally rendered only after the user submits.
-- Calculations run in `onClick` handlers, not during render. Constants (conversion factors, lookup tables) are defined at module level.
-- `Exercise` uses `next/link`'s `<Link>` for navigation (not `Grid.Column as="a"`, which doesn't produce a real anchor).
-- Text inputs call `.trim()` on `event.target.value` in `onChange` so whitespace-only strings don't pass the empty-check guard on the submit button.
-- Number-input pages guard against `isNaN` after parsing and handle domain errors (e.g. division by zero, retirement age ≤ current age) with a user-facing message rather than a crash.
-- Semantic UI `Grid` layouts use `stackable` and `doubling` for responsive behaviour.
-- Component prop types live in co-located `.types.ts` files.
-- `src/components/index.ts` re-exports all components; prefer importing from there.
-- Path alias `@/*` maps to `src/*`.
-- `.npmrc` sets `legacy-peer-deps=true` — required because `semantic-ui-react@3.0.0-beta.2` declares peer deps against React 16–18, but the project uses React 19.
+`src/components/index.ts` re-exports all three; import from there.
+
+### Exercise page pattern
+
+Every exercise page follows the same structure:
+
+1. Input state initialised to `""` (or `null` for numbers)
+2. Output state initialised to `null`; rendered only after first submission
+3. Calculations in the `onClick` handler, never during render
+4. Constants (conversion factors, lookup tables) defined at module level
+5. `.trim()` called in `onChange` so whitespace-only strings fail the empty-check guard
+6. `parseFloat`/`parseInt` results checked with `isNaN`; domain errors (division by zero, invalid ranges) surface as user-facing messages, not crashes
+7. Multi-field forms store state as an object and use `event.target.name` to update fields
+
+### Markdown loading
+
+Exercise pages pass a path like `/exercises/02-.../01-....md` to `<Solution>` via the `markdown` prop. On first icon click, `Solution` fetches the file, parses it with `marked` using a custom `Renderer`, and displays HTML via `dangerouslySetInnerHTML`. The renderer rewrites relative image `src` values to `/exercises/{chapter}/` so assets resolve correctly.
+
+### API routes
+
+Four routes under `src/app/api/` proxy external services for chapters 09–10:
+
+| Route | External API | ISR TTL | Auth |
+|---|---|---|---|
+| `/api/weather` | OpenWeatherMap | 5 min | `OPENWEATHERMAP_API_KEY` env or `key` query param |
+| `/api/movie` | OMDB | 1 hour | `OMDB_API_KEY` env or `key` query param |
+| `/api/flickr` | Flickr public feed | 1 min | none |
+| `/api/whos-in-space` | Open Notify | 1 min | none |
+
+OMDB error handling checks both HTTP status and `data.Response === "False"`.
+
+### Semantic UI CSS
+
+CSS is kept as a local file at `src/app/semantic.css` (with fonts/images under `src/app/themes/`), not imported from the `semantic-ui-css` npm package. The npm package's minified CSS contains a selector that Turbopack's strict CSS parser rejects.
+
+### Package manager
+
+Uses pnpm 11. Key config:
+- `.npmrc`: `strict-peer-dependencies=false` + `auto-install-peers=true` — `semantic-ui-react@3.0.0-beta.2` declares peer deps against React 16–18 but the project runs React 19
+- `package.json` → `pnpm.onlyBuiltDependencies: ["sharp", "unrs-resolver"]` — approves Next.js dependency build scripts under pnpm 11's stricter defaults
+
+### Other notes
+
+- Path alias `@/*` → `src/*`
+- Component prop types in co-located `.types.ts` files
+- `next.config.mjs` enables the styled-components SWC compiler and React strict mode
+- Semantic UI `Grid` layouts use `stackable` and `doubling` for responsive behaviour
+- Public markdown files live in `public/exercises/{chapter}/`
