@@ -19,7 +19,7 @@
     "@types/marked": "^5.0.2",
     "@vercel/speed-insights": "^2.0.0",
     "marked": "^18.0.3",
-    "next": "^16.2.3",
+    "next": "^16.2.6",
     "react": "^19",
     "react-dom": "^19",
     "semantic-ui-css": "^2.5.0",
