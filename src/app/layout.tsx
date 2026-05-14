@@ -8,7 +8,7 @@ const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Exercises for AI",
-  description: "Solutions to 'Exercises for Programmers' by Brian P. Hogan",
+  description: "AI Solutions to 'Exercises for Programmers' by Brian P. Hogan",
 };
 
 export default function RootLayout({
